@@ -18,6 +18,8 @@ function findIndexOf(str, target) {
   console.log("Index:", str.indexOf(target));
 }
 findIndexOf("Hello World", "World");
+//even the whole word is being counted as a letter due to string
+
 
 // lastIndexOf
 function findLastIndexOf(str, target) {

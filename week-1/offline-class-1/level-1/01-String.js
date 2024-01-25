@@ -27,6 +27,7 @@ function findLastIndexOf(str, target) {
   console.log("Index:", str.lastIndexOf(target));
 }
 findLastIndexOf("Hello World World", "World");
+//if index is -1
 
 // slice
 function getSlice(str, start, end) {
@@ -34,6 +35,8 @@ function getSlice(str, start, end) {
   console.log("After slice:", str.slice(start, end));
 }
 getSlice("Hello World", 0, 5);
+getSlice("Hello World", 0, -1);//is like 1 element from the last position
+getSlice("Hello World", 0, 0);//returns nothing 
 
 // substring
 function getSubstring(str, start, end) {

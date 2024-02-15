@@ -12,10 +12,22 @@
     - For any other route not defined in the server return 404
     Testing the server - run `npm run test-fileServer` command in terminal
  */
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
 
+// if there is anything after ./files/...  control will reach there 
+//  :fileName shows to reach anything that comes after ./files/
+app.get("/files/:fileName", function(req,res){
+  const name = req.params.fileName;
+  console.log(name);
+  fs.readFile(name,"utf-8", function(err ,data){
+    res.json({
+      data
+    });
+  })
+})
 
 module.exports = app;

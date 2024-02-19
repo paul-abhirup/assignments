@@ -1,9 +1,26 @@
+/*
+let state = {
+  count : 0 
+}
+
+function App () {
+  return(
+    <div>{state.count}</div>
+  )
+}
+export default App
+*/
+
+
+
 // let state = {
 //   count: 0 
 // }
 
+// in react u cant declare a global variable like this and use it to change state 
 
 /*
+// here we are creasting a normal counter button
 
 import React from 'react';
 import { useState } from 'react';
@@ -14,7 +31,11 @@ function App(){
   //by using setState(0) we are setting state to 0
 
   function onClickHandler(){
+
     // state.count = state.count + 1 ;
+    //this is not used due to wrong nature of setting the variable 
+
+
     setCount(count + 1);
 
   }
@@ -31,18 +52,6 @@ export default App
 */
 
 
-/*
-let state = {
-  count : 0 
-}
-
-function App () {
-  return(
-    <div>{state.count}</div>
-  )
-}
-export default App
-*/
 
 
 /*
@@ -58,7 +67,10 @@ function App(){
   return (
 
     <div>
+    // Parent Component
     <CustomButton count={count} setCount={setCount} />
+    // here u have created 2 props of CustomButton function props.count and props.setCount
+
     <CustomButton count={count + 1} setCount={setCount} />
     <CustomButton count={count - 1} setCount={setCount} />
     <CustomButton count={count * 100} setCount={setCount} />
@@ -66,13 +78,17 @@ function App(){
   )
 }
 
-//component
+// Props are like messages or arguments you pass from one React component (parent) to another (child). They allow you to send data (text, numbers, objects, even functions) from the parent component to the child component, telling it what information to display or use.
+
+//Child component
 function CustomButton(props){
-//its not getting the state as an input but it is getting the props as an input
+
+// its not getting the state as an input but it is getting the props as an input
 
   function onClickHandler() {
     props.setCount(props.count + 1);
   }
+
 
   return(
     <button onMouseOver={onClickHandler}>
@@ -98,7 +114,6 @@ import { useState } from 'react';
 // {
 //   todo: [{title: 'todo 1',description: 'buy milk', completed : false}]
 // }
-
 //think how to render multiple todo items
 
 function App(){
@@ -118,6 +133,7 @@ function App(){
   // doing in an ugly way
   // stringify the object and then parse it
   //this stringify the todo and renders them
+
   return (
     <div>
     {JSON.stringify(todos)}
@@ -132,7 +148,7 @@ function App(){
 //   completed: false
 // }
 
-//component
+//Child component
 
 function Todo(props){
   return(

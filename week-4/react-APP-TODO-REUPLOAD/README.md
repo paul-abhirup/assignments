@@ -24,7 +24,8 @@ For backend
 7]  now create database mongoDB
   - npm i mongoose 
 8]  create mongoose schema , also url also needed 
-9] 
+9] integrate DB to to code 
+10] 
 
 
 

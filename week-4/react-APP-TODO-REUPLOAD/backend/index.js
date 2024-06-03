@@ -35,19 +35,40 @@ app.post("/todo",async function(req,res){
   await todo.create ({
     title: createPayload.title ,
     description: createPayload.description,
+    
+    // this completed helps to solve bug like when you create a todo its not completed so u have to mark it as completed in the frontend 
+    completed: false
+  })
+
+  // we are using async await to resolve sceneraios when the database is down the user is shown with the msg that the database is created
+
+  res.json({
+    msg:"Todo created"
   })
 });
 
 
 //a get endpoint for geting a todo 
-app.get("/todos",function(req,res){
+app.get("/todos",async function(req,res){
+const todos = await todo.find({});
+
+  // we can fill the object to filter based on params
+  // todo.find({
+  //   title: " gym"
+  // })
+  // we are using async to deal with server or with issues: lags,etc. 
+  // console.log(todos);// promise
+
+  // using json as a respond
+  res.json({
+    todos
+  })
 
 });
 
 
-
 //a put endpoint for marking the todo as completed or not 
-app.put("/completed",function(req,res){
+app.put("/completed",async function(req,res){
   const updatePayload = req.body;
   const parsedPayload = updateTodo.safeParse(updatePayload);
   if (!parsedPayload.success) {
@@ -56,10 +77,18 @@ app.put("/completed",function(req,res){
     })
     return;
   }
-
+  await todo.update({
+    // we are using _id because in mongodb every unique entry is identified by _id automatically along with title , description , etc
+    _id: req.body.id
+  },{
+    completed: true
+  })
+  res.json({
+    msg: "Todo mark as completed"
+  })
 });
 
-
+app.listen(3000);
 
 
 

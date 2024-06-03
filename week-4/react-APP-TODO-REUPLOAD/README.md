@@ -64,7 +64,7 @@ For backend
   - npm i mongoose 
 8]  create mongoose schema , also url also needed 
 9] integrate DB to to code 
-10] 
+10] building app.get endpoint 
 
 
 
